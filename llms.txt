@@ -1,0 +1,9 @@
+# Screenplay Anatomy
+
+> Reproducible aggregate screenplay analysis. Code MIT; MovieSum-derived data CC BY-NC 4.0. No corpus text is distributed.
+
+- [Overview](https://github.com/inkwell-app/screenplay-anatomy/blob/main/README.md)
+- [Method](https://github.com/inkwell-app/screenplay-anatomy/blob/main/docs/methodology.md)
+- [Data dictionary](https://github.com/inkwell-app/screenplay-anatomy/blob/main/docs/data-dictionary.md)
+- [Data license](https://github.com/inkwell-app/screenplay-anatomy/blob/main/LICENSE-DATA)
+- [Interactive atlas](https://www.inkwell.software/resources/screenplay-anatomy?utm_source=github&utm_medium=referral&utm_campaign=screenplay_anatomy&utm_id=github_screenplay_anatomy&utm_source_platform=github&utm_content=llms_atlas)

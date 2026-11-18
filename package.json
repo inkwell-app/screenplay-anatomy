@@ -1,0 +1,27 @@
+{
+  "name": "@inkwell/screenplay-anatomy",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reproducible screenplay structure analysis, aggregate data, and original synthetic fixtures.",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inkwell-app/screenplay-anatomy.git"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "packageManager": "pnpm@10.20.0",
+  "scripts": {
+    "analyze": "node src/analyze-screenplay-anatomy.mts",
+    "test": "node --test src/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "check:data": "node src/check-data.ts"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.2",
+    "typescript": "5.9.3",
+    "ajv": "8.20.0"
+  }
+}

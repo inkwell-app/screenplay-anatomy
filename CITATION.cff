@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+title: screenplay-anatomy
+message: Cite this software for code and the references for data. Licenses apply by file, not as alternatives.
+type: software
+authors:
+  - name: Inkwell
+    website: https://www.inkwell.software
+repository-code: https://github.com/inkwell-app/screenplay-anatomy
+url: https://www.inkwell.software/resources/screenplay-anatomy
+abstract: >-
+  Reproducible aggregate screenplay-structure statistics. Corpus is not
+  included. Aggregate JSON is CC BY-NC 4.0; the analysis script is MIT.
+license:
+  - MIT
+  - CC-BY-NC-4.0
+keywords:
+  - screenwriting
+  - screenplay
+  - reproducibility
+  - statistics
+references:
+  - type: data
+    title: MovieSum
+    authors:
+      - family-names: Saxena
+        given-names: Rohit
+      - family-names: Keller
+        given-names: Frank
+    url: https://huggingface.co/datasets/rohitsaxena/MovieSum
+    license: CC-BY-NC-4.0
+  - type: data
+    title: Screenplay Anatomy aggregate snapshot, adapted from MovieSum
+    authors:
+      - name: Inkwell
+    url: https://github.com/inkwell-app/screenplay-anatomy/blob/main/data/screenplay-anatomy.generated.json
+    license: CC-BY-NC-4.0
