@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://www.inkwell.software/resources/screenplay-anatomy?utm_source=github&amp;utm_medium=referral&amp;utm_campaign=screenplay_anatomy&amp;utm_id=github_screenplay_anatomy&amp;utm_source_platform=github&amp;utm_content=hero_atlas">
+    <img src="assets/social-preview.png" alt="Screenplay Anatomy: the analysis behind the atlas. Charts from the atlas show the speaking cast arriving across a script and the top-three dialogue share falling as the cast grows." width="100%">
+  </a>
+</p>
+
 # Screenplay Anatomy
 
 Reproduce the statistics behind Inkwell’s [Screenplay Anatomy Atlas](https://www.inkwell.software/resources/screenplay-anatomy?utm_source=github&utm_medium=referral&utm_campaign=screenplay_anatomy&utm_id=github_screenplay_anatomy&utm_source_platform=github&utm_content=readme_atlas) and explore a licensed aggregate dataset without downloading a corpus.
