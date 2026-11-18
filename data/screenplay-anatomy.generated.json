@@ -1,0 +1,673 @@
+{
+  "analysisVersion": "1.1.0",
+  "analyzedAt": "2026-08-10",
+  "corpus": {
+    "name": "MovieSum",
+    "creators": ["Rohit Saxena", "Frank Keller"],
+    "source": "https://huggingface.co/datasets/rohitsaxena/MovieSum",
+    "paper": "https://aclanthology.org/2024.findings-acl.239/",
+    "license": "CC BY-NC 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "adaptationNotice": "Aggregate analysis adapted from MovieSum; no screenplay text, summaries, identifiers, or title-level measurements are redistributed.",
+    "inputSha256": "5992b076833b40a88ae96f3c9740dc615bff94b76d27f32ac2a6ad72213215f1",
+    "records": 2200,
+    "includedRecords": 2077,
+    "excludedRecords": 123,
+    "exclusionCounts": {
+      "too_few_scenes": 107,
+      "too_few_speaking_characters": 15,
+      "too_few_dialogue_blocks": 17,
+      "too_few_narrative_words": 1
+    }
+  },
+  "method": {
+    "unitOfAnalysis": "One screenplay receives equal weight in every corpus summary.",
+    "progressDefinition": "Scenes are assigned by the midpoint of their action-plus-dialogue word count after each screenplay is normalized to 100%.",
+    "actionDefinition": "Words tagged scene_description divided by scene_description plus dialogue words.",
+    "characterDefinition": "A normalized character cue followed by at least one dialogue block.",
+    "longestSceneDefinition": "The share of a screenplay's action-plus-dialogue words contained in its longest 10% of scenes, rounding the scene count up.",
+    "dialogueFreeSceneDefinition": "The share of parsed scenes containing no tagged dialogue words.",
+    "thresholds": {
+      "minimumScenes": 20,
+      "minimumNarrativeWords": 5000,
+      "minimumSpeakingCharacters": 3,
+      "minimumDialogueBlocks": 20
+    },
+    "bootstrap": {
+      "statistic": "median",
+      "interval": "percentile 95%",
+      "replicates": 2000,
+      "seed": 20260810
+    }
+  },
+  "overview": {
+    "narrativeWords": {
+      "p10": 15871.6,
+      "p25": 18380,
+      "median": 21579,
+      "p75": 25179,
+      "p90": 29019.4
+    },
+    "tokenizedNarrativeWords": {
+      "p10": 15476.4,
+      "p25": 17908,
+      "median": 20759,
+      "p75": 23715,
+      "p90": 27087.2
+    },
+    "sceneCount": {
+      "p10": 68,
+      "p25": 97,
+      "median": 130,
+      "p75": 168,
+      "p90": 211
+    },
+    "medianSceneWords": {
+      "p10": 52.5,
+      "p25": 70,
+      "median": 94,
+      "p75": 132,
+      "p90": 189
+    },
+    "longestSceneDecileShare": {
+      "p10": 0.317,
+      "p25": 0.3455,
+      "median": 0.3792,
+      "p75": 0.4199,
+      "p90": 0.4615
+    },
+    "dialogueFreeSceneShare": {
+      "p10": 0.1329,
+      "p25": 0.2027,
+      "median": 0.2945,
+      "p75": 0.3852,
+      "p90": 0.4697
+    },
+    "speakingCharacterCount": {
+      "p10": 26,
+      "p25": 36,
+      "median": 50,
+      "p75": 72,
+      "p90": 110
+    },
+    "actionShare": {
+      "p10": 0.3957,
+      "p25": 0.4859,
+      "median": 0.579,
+      "p75": 0.6751,
+      "p90": 0.7398
+    },
+    "topThreeDialogueShare": {
+      "p10": 0.3979,
+      "p25": 0.4798,
+      "median": 0.5718,
+      "p75": 0.6603,
+      "p90": 0.7354
+    },
+    "headingCoverage": {
+      "p10": 0.9863,
+      "p25": 0.9913,
+      "median": 0.9947,
+      "p75": 1,
+      "p90": 1
+    },
+    "summaryWords": {
+      "p10": 410.6,
+      "p25": 538,
+      "median": 656,
+      "p75": 714,
+      "p90": 801.4
+    },
+    "compressionRatio": {
+      "p10": 0.019,
+      "p25": 0.025,
+      "median": 0.0302,
+      "p75": 0.0366,
+      "p90": 0.0443
+    },
+    "aggregateCompressionRatio": 0.0298,
+    "novelNgrams": {
+      "unigram": {
+        "p10": 0.242,
+        "p25": 0.2718,
+        "median": 0.3056,
+        "p75": 0.3426,
+        "p90": 0.3784
+      },
+      "bigram": {
+        "p10": 0.6727,
+        "p25": 0.6993,
+        "median": 0.726,
+        "p75": 0.7557,
+        "p90": 0.7824
+      },
+      "trigram": {
+        "p10": 0.9236,
+        "p25": 0.9378,
+        "median": 0.9511,
+        "p75": 0.9627,
+        "p90": 0.9717
+      }
+    },
+    "scriptLengthLogNormalFit": {
+      "mu": 9.9276,
+      "sigma": 0.2391,
+      "rawSkewness": 0.7502,
+      "logSkewness": -0.5862,
+      "kolmogorovSmirnovD": 0.0394
+    },
+    "summaryLengthLogNormalFit": {
+      "mu": 6.3787,
+      "sigma": 0.4305,
+      "rawSkewness": 0.0553,
+      "logSkewness": -3.4142,
+      "kolmogorovSmirnovD": 0.178
+    }
+  },
+  "progress": [
+    {
+      "decile": 1,
+      "range": "0–10%",
+      "actionShare": {
+        "p10": 0.4186,
+        "p25": 0.5257,
+        "median": 0.6382,
+        "p75": 0.743,
+        "p90": 0.8262,
+        "confidence95": {
+          "low": 0.6318,
+          "high": 0.6486
+        }
+      },
+      "scenes": {
+        "p10": 5,
+        "p25": 8,
+        "median": 13,
+        "p75": 17,
+        "p90": 23,
+        "confidence95": {
+          "low": 12,
+          "high": 13
+        }
+      },
+      "speakingCastIntroduced": {
+        "p10": 0.1247,
+        "p25": 0.1613,
+        "median": 0.2174,
+        "p75": 0.2807,
+        "p90": 0.3571,
+        "confidence95": {
+          "low": 0.2121,
+          "high": 0.2211
+        }
+      }
+    },
+    {
+      "decile": 2,
+      "range": "10–20%",
+      "actionShare": {
+        "p10": 0.3419,
+        "p25": 0.439,
+        "median": 0.5573,
+        "p75": 0.6598,
+        "p90": 0.755,
+        "confidence95": {
+          "low": 0.5501,
+          "high": 0.566
+        }
+      },
+      "scenes": {
+        "p10": 5,
+        "p25": 7,
+        "median": 11,
+        "p75": 16,
+        "p90": 21,
+        "confidence95": {
+          "low": 11,
+          "high": 11
+        }
+      },
+      "speakingCastIntroduced": {
+        "p10": 0.2338,
+        "p25": 0.2885,
+        "median": 0.3571,
+        "p75": 0.4444,
+        "p90": 0.5202,
+        "confidence95": {
+          "low": 0.3511,
+          "high": 0.3636
+        }
+      }
+    },
+    {
+      "decile": 3,
+      "range": "20–30%",
+      "actionShare": {
+        "p10": 0.3339,
+        "p25": 0.4471,
+        "median": 0.5514,
+        "p75": 0.6657,
+        "p90": 0.7656,
+        "confidence95": {
+          "low": 0.5434,
+          "high": 0.5607
+        }
+      },
+      "scenes": {
+        "p10": 5,
+        "p25": 8,
+        "median": 11,
+        "p75": 16,
+        "p90": 22,
+        "confidence95": {
+          "low": 11,
+          "high": 12
+        }
+      },
+      "speakingCastIntroduced": {
+        "p10": 0.3333,
+        "p25": 0.3881,
+        "median": 0.4651,
+        "p75": 0.5556,
+        "p90": 0.6414,
+        "confidence95": {
+          "low": 0.4603,
+          "high": 0.4727
+        }
+      }
+    },
+    {
+      "decile": 4,
+      "range": "30–40%",
+      "actionShare": {
+        "p10": 0.3418,
+        "p25": 0.4361,
+        "median": 0.5474,
+        "p75": 0.6584,
+        "p90": 0.7612,
+        "confidence95": {
+          "low": 0.5389,
+          "high": 0.5569
+        }
+      },
+      "scenes": {
+        "p10": 5,
+        "p25": 8,
+        "median": 12,
+        "p75": 17,
+        "p90": 23,
+        "confidence95": {
+          "low": 11,
+          "high": 12
+        }
+      },
+      "speakingCastIntroduced": {
+        "p10": 0.4245,
+        "p25": 0.4848,
+        "median": 0.56,
+        "p75": 0.6458,
+        "p90": 0.7253,
+        "confidence95": {
+          "low": 0.5541,
+          "high": 0.5667
+        }
+      }
+    },
+    {
+      "decile": 5,
+      "range": "40–50%",
+      "actionShare": {
+        "p10": 0.3345,
+        "p25": 0.4314,
+        "median": 0.5447,
+        "p75": 0.6535,
+        "p90": 0.7569,
+        "confidence95": {
+          "low": 0.5351,
+          "high": 0.5535
+        }
+      },
+      "scenes": {
+        "p10": 5,
+        "p25": 8,
+        "median": 12,
+        "p75": 17,
+        "p90": 22.4,
+        "confidence95": {
+          "low": 11,
+          "high": 12
+        }
+      },
+      "speakingCastIntroduced": {
+        "p10": 0.5152,
+        "p25": 0.5726,
+        "median": 0.65,
+        "p75": 0.7308,
+        "p90": 0.8046,
+        "confidence95": {
+          "low": 0.6429,
+          "high": 0.6552
+        }
+      }
+    },
+    {
+      "decile": 6,
+      "range": "50–60%",
+      "actionShare": {
+        "p10": 0.3396,
+        "p25": 0.444,
+        "median": 0.5446,
+        "p75": 0.6617,
+        "p90": 0.7669,
+        "confidence95": {
+          "low": 0.5375,
+          "high": 0.5529
+        }
+      },
+      "scenes": {
+        "p10": 5,
+        "p25": 8,
+        "median": 12,
+        "p75": 17,
+        "p90": 23,
+        "confidence95": {
+          "low": 12,
+          "high": 12
+        }
+      },
+      "speakingCastIntroduced": {
+        "p10": 0.6026,
+        "p25": 0.6591,
+        "median": 0.7339,
+        "p75": 0.8033,
+        "p90": 0.8681,
+        "confidence95": {
+          "low": 0.7292,
+          "high": 0.7407
+        }
+      }
+    },
+    {
+      "decile": 7,
+      "range": "60–70%",
+      "actionShare": {
+        "p10": 0.3411,
+        "p25": 0.4455,
+        "median": 0.5572,
+        "p75": 0.6734,
+        "p90": 0.7703,
+        "confidence95": {
+          "low": 0.5506,
+          "high": 0.5654
+        }
+      },
+      "scenes": {
+        "p10": 5,
+        "p25": 8,
+        "median": 12,
+        "p75": 18,
+        "p90": 24,
+        "confidence95": {
+          "low": 12,
+          "high": 13
+        }
+      },
+      "speakingCastIntroduced": {
+        "p10": 0.68,
+        "p25": 0.7407,
+        "median": 0.8056,
+        "p75": 0.8661,
+        "p90": 0.92,
+        "confidence95": {
+          "low": 0.8,
+          "high": 0.8107
+        }
+      }
+    },
+    {
+      "decile": 8,
+      "range": "70–80%",
+      "actionShare": {
+        "p10": 0.3381,
+        "p25": 0.4449,
+        "median": 0.5629,
+        "p75": 0.6845,
+        "p90": 0.7966,
+        "confidence95": {
+          "low": 0.5522,
+          "high": 0.5755
+        }
+      },
+      "scenes": {
+        "p10": 5,
+        "p25": 9,
+        "median": 13,
+        "p75": 18,
+        "p90": 25,
+        "confidence95": {
+          "low": 12,
+          "high": 13
+        }
+      },
+      "speakingCastIntroduced": {
+        "p10": 0.7725,
+        "p25": 0.8246,
+        "median": 0.8772,
+        "p75": 0.925,
+        "p90": 0.963,
+        "confidence95": {
+          "low": 0.8718,
+          "high": 0.881
+        }
+      }
+    },
+    {
+      "decile": 9,
+      "range": "80–90%",
+      "actionShare": {
+        "p10": 0.3599,
+        "p25": 0.4735,
+        "median": 0.5987,
+        "p75": 0.7327,
+        "p90": 0.8291,
+        "confidence95": {
+          "low": 0.5879,
+          "high": 0.6102
+        }
+      },
+      "scenes": {
+        "p10": 5,
+        "p25": 9,
+        "median": 14,
+        "p75": 20,
+        "p90": 27,
+        "confidence95": {
+          "low": 13,
+          "high": 14
+        }
+      },
+      "speakingCastIntroduced": {
+        "p10": 0.8684,
+        "p25": 0.9091,
+        "median": 0.9444,
+        "p75": 0.9737,
+        "p90": 1,
+        "confidence95": {
+          "low": 0.9412,
+          "high": 0.9467
+        }
+      }
+    },
+    {
+      "decile": 10,
+      "range": "90–100%",
+      "actionShare": {
+        "p10": 0.4194,
+        "p25": 0.5402,
+        "median": 0.6608,
+        "p75": 0.7848,
+        "p90": 0.8655,
+        "confidence95": {
+          "low": 0.6481,
+          "high": 0.6696
+        }
+      },
+      "scenes": {
+        "p10": 5,
+        "p25": 8,
+        "median": 14,
+        "p75": 20,
+        "p90": 28,
+        "confidence95": {
+          "low": 13,
+          "high": 14
+        }
+      },
+      "speakingCastIntroduced": {
+        "p10": 1,
+        "p25": 1,
+        "median": 1,
+        "p75": 1,
+        "p90": 1,
+        "confidence95": {
+          "low": 1,
+          "high": 1
+        }
+      }
+    }
+  ],
+  "castDialogueBins": [
+    {
+      "label": "3–19",
+      "scripts": 73,
+      "speakingCharacters": {
+        "p10": 9.2,
+        "p25": 13,
+        "median": 15,
+        "p75": 17,
+        "p90": 19
+      },
+      "topThreeDialogueShare": {
+        "p10": 0.5947,
+        "p25": 0.6555,
+        "median": 0.7159,
+        "p75": 0.8308,
+        "p90": 0.9197
+      }
+    },
+    {
+      "label": "20–29",
+      "scripts": 244,
+      "speakingCharacters": {
+        "p10": 21,
+        "p25": 23,
+        "median": 26,
+        "p75": 27,
+        "p90": 29
+      },
+      "topThreeDialogueShare": {
+        "p10": 0.5107,
+        "p25": 0.5771,
+        "median": 0.6511,
+        "p75": 0.7365,
+        "p90": 0.7982
+      }
+    },
+    {
+      "label": "30–39",
+      "scripts": 354,
+      "speakingCharacters": {
+        "p10": 31,
+        "p25": 33,
+        "median": 35,
+        "p75": 37,
+        "p90": 38.7
+      },
+      "topThreeDialogueShare": {
+        "p10": 0.482,
+        "p25": 0.5346,
+        "median": 0.625,
+        "p75": 0.6986,
+        "p90": 0.7554
+      }
+    },
+    {
+      "label": "40–59",
+      "scripts": 648,
+      "speakingCharacters": {
+        "p10": 41,
+        "p25": 44.75,
+        "median": 49,
+        "p75": 54,
+        "p90": 57
+      },
+      "topThreeDialogueShare": {
+        "p10": 0.4277,
+        "p25": 0.5023,
+        "median": 0.582,
+        "p75": 0.6579,
+        "p90": 0.7178
+      }
+    },
+    {
+      "label": "60–79",
+      "scripts": 350,
+      "speakingCharacters": {
+        "p10": 61,
+        "p25": 63,
+        "median": 69,
+        "p75": 73,
+        "p90": 77
+      },
+      "topThreeDialogueShare": {
+        "p10": 0.3988,
+        "p25": 0.4567,
+        "median": 0.5236,
+        "p75": 0.6016,
+        "p90": 0.6759
+      }
+    },
+    {
+      "label": "80–119",
+      "scripts": 231,
+      "speakingCharacters": {
+        "p10": 81,
+        "p25": 86,
+        "median": 95,
+        "p75": 104,
+        "p90": 113
+      },
+      "topThreeDialogueShare": {
+        "p10": 0.3543,
+        "p25": 0.4099,
+        "median": 0.4927,
+        "p75": 0.5664,
+        "p90": 0.6284
+      }
+    },
+    {
+      "label": "120+",
+      "scripts": 177,
+      "speakingCharacters": {
+        "p10": 125,
+        "p25": 136,
+        "median": 164,
+        "p75": 235,
+        "p90": 312.4
+      },
+      "topThreeDialogueShare": {
+        "p10": 0.2671,
+        "p25": 0.3427,
+        "median": 0.4135,
+        "p75": 0.4914,
+        "p90": 0.5769
+      }
+    }
+  ],
+  "relationships": {
+    "narrativeWordsVsSceneCountSpearman": 0.2549,
+    "castSizeVsTopThreeDialogueShareSpearman": -0.5227,
+    "scriptLengthVsSummaryLengthPearson": 0.1258,
+    "scriptLengthVsSummaryLengthSpearman": 0.1643
+  }
+}

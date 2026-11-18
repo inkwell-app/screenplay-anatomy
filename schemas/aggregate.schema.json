@@ -1,0 +1,530 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/inkwell-app/screenplay-anatomy/blob/main/schemas/aggregate.schema.json",
+  "type": "object",
+  "properties": {
+    "analysisVersion": {
+      "type": "string"
+    },
+    "analyzedAt": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "corpus": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "MovieSum"
+        },
+        "source": {
+          "const": "https://huggingface.co/datasets/rohitsaxena/MovieSum"
+        },
+        "paper": {
+          "const": "https://aclanthology.org/2024.findings-acl.239/"
+        },
+        "license": {
+          "const": "CC BY-NC 4.0"
+        },
+        "licenseUrl": {
+          "const": "https://creativecommons.org/licenses/by-nc/4.0/"
+        },
+        "adaptationNotice": {
+          "const": "Aggregate analysis adapted from MovieSum; no screenplay text, summaries, identifiers, or title-level measurements are redistributed."
+        },
+        "inputSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "creators": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "records": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "includedRecords": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "excludedRecords": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "exclusionCounts": {
+          "type": "object",
+          "properties": {
+            "too_few_scenes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "too_few_speaking_characters": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "too_few_dialogue_blocks": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "too_few_narrative_words": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "source",
+        "paper",
+        "license",
+        "licenseUrl",
+        "adaptationNotice",
+        "inputSha256",
+        "creators",
+        "records",
+        "includedRecords",
+        "excludedRecords",
+        "exclusionCounts"
+      ],
+      "additionalProperties": false
+    },
+    "method": {
+      "type": "object",
+      "properties": {
+        "unitOfAnalysis": {
+          "type": "string"
+        },
+        "progressDefinition": {
+          "type": "string"
+        },
+        "actionDefinition": {
+          "type": "string"
+        },
+        "characterDefinition": {
+          "type": "string"
+        },
+        "longestSceneDefinition": {
+          "type": "string"
+        },
+        "dialogueFreeSceneDefinition": {
+          "type": "string"
+        },
+        "thresholds": {
+          "type": "object",
+          "properties": {
+            "minimumScenes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minimumNarrativeWords": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minimumSpeakingCharacters": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minimumDialogueBlocks": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "minimumScenes",
+            "minimumNarrativeWords",
+            "minimumSpeakingCharacters",
+            "minimumDialogueBlocks"
+          ],
+          "additionalProperties": false
+        },
+        "bootstrap": {
+          "type": "object",
+          "properties": {
+            "statistic": {
+              "type": "string"
+            },
+            "interval": {
+              "type": "string"
+            },
+            "replicates": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "seed": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": ["statistic", "interval", "replicates", "seed"],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "unitOfAnalysis",
+        "progressDefinition",
+        "actionDefinition",
+        "characterDefinition",
+        "longestSceneDefinition",
+        "dialogueFreeSceneDefinition",
+        "thresholds",
+        "bootstrap"
+      ],
+      "additionalProperties": false
+    },
+    "overview": {
+      "type": "object",
+      "properties": {
+        "narrativeWords": {
+          "$ref": "#/$defs/nonnegativeDistribution"
+        },
+        "tokenizedNarrativeWords": {
+          "$ref": "#/$defs/nonnegativeDistribution"
+        },
+        "sceneCount": {
+          "$ref": "#/$defs/nonnegativeDistribution"
+        },
+        "medianSceneWords": {
+          "$ref": "#/$defs/nonnegativeDistribution"
+        },
+        "longestSceneDecileShare": {
+          "$ref": "#/$defs/shareDistribution"
+        },
+        "dialogueFreeSceneShare": {
+          "$ref": "#/$defs/shareDistribution"
+        },
+        "speakingCharacterCount": {
+          "$ref": "#/$defs/nonnegativeDistribution"
+        },
+        "actionShare": {
+          "$ref": "#/$defs/shareDistribution"
+        },
+        "topThreeDialogueShare": {
+          "$ref": "#/$defs/shareDistribution"
+        },
+        "headingCoverage": {
+          "$ref": "#/$defs/shareDistribution"
+        },
+        "summaryWords": {
+          "$ref": "#/$defs/nonnegativeDistribution"
+        },
+        "compressionRatio": {
+          "$ref": "#/$defs/nonnegativeDistribution"
+        },
+        "aggregateCompressionRatio": {
+          "$ref": "#/$defs/nonnegative"
+        },
+        "novelNgrams": {
+          "type": "object",
+          "properties": {
+            "unigram": {
+              "$ref": "#/$defs/shareDistribution"
+            },
+            "bigram": {
+              "$ref": "#/$defs/shareDistribution"
+            },
+            "trigram": {
+              "$ref": "#/$defs/shareDistribution"
+            }
+          },
+          "required": ["unigram", "bigram", "trigram"],
+          "additionalProperties": false
+        },
+        "scriptLengthLogNormalFit": {
+          "$ref": "#/$defs/fit"
+        },
+        "summaryLengthLogNormalFit": {
+          "$ref": "#/$defs/fit"
+        }
+      },
+      "required": [
+        "narrativeWords",
+        "tokenizedNarrativeWords",
+        "sceneCount",
+        "medianSceneWords",
+        "longestSceneDecileShare",
+        "dialogueFreeSceneShare",
+        "speakingCharacterCount",
+        "actionShare",
+        "topThreeDialogueShare",
+        "headingCoverage",
+        "summaryWords",
+        "compressionRatio",
+        "aggregateCompressionRatio",
+        "novelNgrams",
+        "scriptLengthLogNormalFit",
+        "summaryLengthLogNormalFit"
+      ],
+      "additionalProperties": false
+    },
+    "progress": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "properties": {
+          "decile": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          },
+          "range": {
+            "type": "string",
+            "pattern": "^[0-9]+\u2013[0-9]+%$"
+          },
+          "actionShare": {
+            "$ref": "#/$defs/shareConfidence"
+          },
+          "scenes": {
+            "$ref": "#/$defs/nonnegativeConfidence"
+          },
+          "speakingCastIntroduced": {
+            "$ref": "#/$defs/shareConfidence"
+          }
+        },
+        "required": ["decile", "range", "actionShare", "scenes", "speakingCastIntroduced"],
+        "additionalProperties": false
+      }
+    },
+    "castDialogueBins": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "pattern": "^[0-9]+(?:\u2013[0-9]+|\\+)$"
+          },
+          "scripts": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "speakingCharacters": {
+            "$ref": "#/$defs/nonnegativeDistribution"
+          },
+          "topThreeDialogueShare": {
+            "$ref": "#/$defs/shareDistribution"
+          }
+        },
+        "required": ["label", "scripts", "speakingCharacters", "topThreeDialogueShare"],
+        "additionalProperties": false
+      }
+    },
+    "relationships": {
+      "type": "object",
+      "properties": {
+        "narrativeWordsVsSceneCountSpearman": {
+          "type": ["number", "null"],
+          "minimum": -1,
+          "maximum": 1
+        },
+        "castSizeVsTopThreeDialogueShareSpearman": {
+          "type": ["number", "null"],
+          "minimum": -1,
+          "maximum": 1
+        },
+        "scriptLengthVsSummaryLengthPearson": {
+          "type": ["number", "null"],
+          "minimum": -1,
+          "maximum": 1
+        },
+        "scriptLengthVsSummaryLengthSpearman": {
+          "type": ["number", "null"],
+          "minimum": -1,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "narrativeWordsVsSceneCountSpearman",
+        "castSizeVsTopThreeDialogueShareSpearman",
+        "scriptLengthVsSummaryLengthPearson",
+        "scriptLengthVsSummaryLengthSpearman"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "analysisVersion",
+    "analyzedAt",
+    "corpus",
+    "method",
+    "overview",
+    "progress",
+    "castDialogueBins",
+    "relationships"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "nonnegative": {
+      "type": ["number", "null"],
+      "minimum": 0
+    },
+    "nonnegativeDistribution": {
+      "type": "object",
+      "properties": {
+        "p10": {
+          "$ref": "#/$defs/nonnegative"
+        },
+        "p25": {
+          "$ref": "#/$defs/nonnegative"
+        },
+        "median": {
+          "$ref": "#/$defs/nonnegative"
+        },
+        "p75": {
+          "$ref": "#/$defs/nonnegative"
+        },
+        "p90": {
+          "$ref": "#/$defs/nonnegative"
+        }
+      },
+      "required": ["p10", "p25", "median", "p75", "p90"],
+      "additionalProperties": false
+    },
+    "nonnegativeConfidence": {
+      "type": "object",
+      "properties": {
+        "p10": {
+          "$ref": "#/$defs/nonnegative"
+        },
+        "p25": {
+          "$ref": "#/$defs/nonnegative"
+        },
+        "median": {
+          "$ref": "#/$defs/nonnegative"
+        },
+        "p75": {
+          "$ref": "#/$defs/nonnegative"
+        },
+        "p90": {
+          "$ref": "#/$defs/nonnegative"
+        },
+        "confidence95": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "low": {
+                  "$ref": "#/$defs/nonnegative"
+                },
+                "high": {
+                  "$ref": "#/$defs/nonnegative"
+                }
+              },
+              "required": ["low", "high"],
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "required": ["p10", "p25", "median", "p75", "p90", "confidence95"],
+      "additionalProperties": false
+    },
+    "share": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "shareDistribution": {
+      "type": "object",
+      "properties": {
+        "p10": {
+          "$ref": "#/$defs/share"
+        },
+        "p25": {
+          "$ref": "#/$defs/share"
+        },
+        "median": {
+          "$ref": "#/$defs/share"
+        },
+        "p75": {
+          "$ref": "#/$defs/share"
+        },
+        "p90": {
+          "$ref": "#/$defs/share"
+        }
+      },
+      "required": ["p10", "p25", "median", "p75", "p90"],
+      "additionalProperties": false
+    },
+    "shareConfidence": {
+      "type": "object",
+      "properties": {
+        "p10": {
+          "$ref": "#/$defs/share"
+        },
+        "p25": {
+          "$ref": "#/$defs/share"
+        },
+        "median": {
+          "$ref": "#/$defs/share"
+        },
+        "p75": {
+          "$ref": "#/$defs/share"
+        },
+        "p90": {
+          "$ref": "#/$defs/share"
+        },
+        "confidence95": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "low": {
+                  "$ref": "#/$defs/share"
+                },
+                "high": {
+                  "$ref": "#/$defs/share"
+                }
+              },
+              "required": ["low", "high"],
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "required": ["p10", "p25", "median", "p75", "p90", "confidence95"],
+      "additionalProperties": false
+    },
+    "fit": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "mu": {
+              "type": ["number", "null"]
+            },
+            "sigma": {
+              "type": ["number", "null"]
+            },
+            "rawSkewness": {
+              "type": ["number", "null"]
+            },
+            "logSkewness": {
+              "type": ["number", "null"]
+            },
+            "kolmogorovSmirnovD": {
+              "type": ["number", "null"]
+            }
+          },
+          "required": ["mu", "sigma", "rawSkewness", "logSkewness", "kolmogorovSmirnovD"],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}

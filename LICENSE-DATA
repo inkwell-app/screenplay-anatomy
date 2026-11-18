@@ -1,0 +1,10 @@
+The aggregate JSON under `data/` (including
+`screenplay-anatomy.generated.json`) is licensed under Creative Commons
+Attribution-NonCommercial 4.0 International (CC BY-NC 4.0).
+
+https://creativecommons.org/licenses/by-nc/4.0/
+
+The analysis script is MIT — see `LICENSE`. Do not treat this file as MIT.
+
+MovieSum (the input corpus) is obtained by the user under MovieSum’s own
+CC BY-NC 4.0 terms. This repository does not redistribute MovieSum.
