@@ -12,6 +12,14 @@ Reproduce the statistics behind Inkwell’s [Screenplay Anatomy Atlas](https://w
 [![Code: MIT](https://img.shields.io/badge/code-MIT-blue)](LICENSE)
 [![Data: CC BY-NC 4.0](https://img.shields.io/badge/data-CC_BY--NC_4.0-blue)](LICENSE-DATA)
 
+## Compare genres and runtimes
+
+Use the [genre table](data/anatomy-genres.generated.json) to compare scene counts, dialogue share and distinct speaking cues across eight genres. Each cohort includes its sample size and percentile range. A film can appear in several genres. Different cues can refer to the same character.
+
+The [runtime table](data/anatomy-runtimes.generated.json) compares scene counts for films running 85–94 and 115–124 minutes. Divide each bin count by its cohort size to compare shares. The final bin includes all scripts with at least 300 scenes.
+
+Both tables combine MovieSum screenplay measurements with Wikidata metadata (CC0). The aggregate tables carry the [CC BY-NC 4.0 license](LICENSE-DATA).
+
 ## Start here
 
 | Goal | Resource |
