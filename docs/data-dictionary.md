@@ -27,3 +27,13 @@ The aggregate snapshot has a separate noncommercial data license. Keep its `corp
 `progress.speakingCastIntroduced` is cumulative: a character counts in every bucket at or after their first speaking scene. Its final decile is one for included scripts. A progress bucket with no narrative words has undefined action share; that script is omitted from that bucket’s action-share distribution, while its scene count is zero.
 
 Log-normal fits report natural-log mean (`mu`) and standard deviation (`sigma`), raw/log skewness, and maximum empirical-vs-fitted CDF distance (`kolmogorovSmirnovD`). The distance is descriptive, not a calibrated goodness-of-fit p-value. Individual fit fields are null when undefined. In particular, the fitted-CDF distance is null for empty, singleton, or constant samples because there is no positive log-space deviation.
+
+## Genre and runtime tables
+
+The genre and runtime tables summarize the same 2,077 eligible MovieSum scripts as the overview. Keep the following attribution with the genre table, whose JSON contains the input and lookup fingerprints. Screenplay statistics are adapted from MovieSum by Rohit Saxena and Frank Keller (2024), licensed CC BY-NC 4.0. Genre tags and film runtimes are from Wikidata contributors, CC0. The tables contain cohort summaries only. [MovieSum](https://huggingface.co/datasets/rohitsaxena/MovieSum) · [MovieSum license](https://creativecommons.org/licenses/by-nc/4.0/) · [Wikidata genre](https://www.wikidata.org/wiki/Property:P136) · [Wikidata duration](https://www.wikidata.org/wiki/Property:P2047)
+
+In the genre table, `covered` counts scripts with at least one of the eight selected genre tags. A script with two matching tags contributes once to each group. `scenes` counts scenes, `dialogue` is the fraction of narrative words in dialogue, and `cast` counts distinct normalized speaking cues. The overview histograms include all eligible scripts. Each histogram starts at zero and includes overflow in its final bin.
+
+The runtime table records the observation date and filtering method. The four exclusion counts account for the difference between `eligible` and `retained`. The two runtime windows cover a subset of retained scripts. Each range includes its lower bound and excludes its upper bound. Its scene-count bins sum to its sample size.
+
+`inputSha256` identifies the MovieSum split bytes. Each table's `lookupSha256` identifies its specific Wikidata lookup. Later edits to Wikidata can change those inputs. The published contracts validate exact fingerprints, field sets, attribution, ordered percentiles, and cohort counts. [Cohort validation](../src/cohorts.ts)
