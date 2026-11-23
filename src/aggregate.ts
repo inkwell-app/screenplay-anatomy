@@ -5,12 +5,12 @@ const schema = JSON.parse(
   readFileSync(new URL("../schemas/aggregate.schema.json", import.meta.url), "utf8"),
 )
 interface Aggregate {
-  corpus: { records: number; includedRecords: number; excludedRecords: number }
+  corpus: { inputSha256: string; records: number; includedRecords: number; excludedRecords: number }
   progress: { decile: number }[]
   castDialogueBins: { scripts: number }[]
 }
 const validate = new Ajv2020({ allErrors: true }).compile<Aggregate>(schema)
-function checkOrder(value: unknown): void {
+export function checkOrder(value: unknown): void {
   if (typeof value !== "object" || value === null) return
   const keys =
     "p10" in value ? ["p10", "p25", "median", "p75", "p90"] : "low" in value ? ["low", "high"] : []
@@ -27,7 +27,7 @@ function checkOrder(value: unknown): void {
   for (const child of Object.values(value)) checkOrder(child)
 }
 /** Closed shape, numeric domains and cross-field checks defend the publication boundary. */
-export function assertAggregate(value: unknown): void {
+export function assertAggregate(value: unknown): Aggregate {
   if (!validate(value)) throw new Error(`Invalid aggregate: ${JSON.stringify(validate.errors)}`)
   if (value.corpus.includedRecords + value.corpus.excludedRecords !== value.corpus.records)
     throw new Error("Included and excluded totals must equal records")
@@ -39,4 +39,5 @@ export function assertAggregate(value: unknown): void {
   if (value.progress.some((bucket, index) => bucket.decile !== index + 1))
     throw new Error("Progress deciles must be ordered and unique")
   checkOrder(value)
+  return value
 }

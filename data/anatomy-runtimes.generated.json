@@ -1,0 +1,51 @@
+{
+  "observedOn": "2026-11-20",
+  "sources": {
+    "scenes": "MovieSum, Rohit Saxena and Frank Keller (2024), https://huggingface.co/datasets/rohitsaxena/MovieSum, CC BY-NC 4.0",
+    "runtime": "Wikidata contributors, https://www.wikidata.org/wiki/Property:P2047, CC0"
+  },
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "method": "One screenplay record per observation. Match one film by IMDb ID. Require exactly one distinct positive best-rank runtime in minutes, with no qualifiers on any best-rank statement. Runtime windows include from and exclude until. Counts begin at zero scenes in binWidth intervals. The last bin includes overflowAt scenes and above.",
+  "inputSha256": "5992b076833b40a88ae96f3c9740dc615bff94b76d27f32ac2a6ad72213215f1",
+  "lookupSha256": "cab56a7d5714a77b5e8d504f27c78f7b1f5fa2e23f536fa495a27c3cd9653630",
+  "eligible": 2077,
+  "retained": 1917,
+  "exclusions": {
+    "item": 5,
+    "missingOrInvalidMinutes": 31,
+    "conflicting": 121,
+    "qualified": 3
+  },
+  "binWidth": 10,
+  "overflowAt": 300,
+  "groups": [
+    {
+      "from": 85,
+      "until": 95,
+      "scripts": 275,
+      "p10": 56,
+      "p25": 83.5,
+      "median": 115,
+      "p75": 144.5,
+      "p90": 175.6,
+      "counts": [
+        0, 0, 4, 7, 9, 13, 16, 15, 16, 20, 25, 22, 26, 23, 20, 13, 10, 13, 4, 2, 1, 1, 3, 3, 0, 0,
+        3, 0, 0, 2, 4
+      ]
+    },
+    {
+      "from": 115,
+      "until": 125,
+      "scripts": 318,
+      "p10": 75.7,
+      "p25": 101.5,
+      "median": 136.5,
+      "p75": 167.75,
+      "p90": 206,
+      "counts": [
+        0, 0, 2, 2, 1, 6, 13, 15, 14, 22, 24, 22, 23, 21, 24, 31, 23, 15, 13, 12, 5, 3, 7, 3, 1, 1,
+        2, 3, 1, 0, 9
+      ]
+    }
+  ]
+}
