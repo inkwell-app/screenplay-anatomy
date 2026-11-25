@@ -24,7 +24,7 @@ Both tables combine MovieSum screenplay measurements with Wikidata metadata (CC0
 
 | Goal | Resource |
 | --- | --- |
-| Explore the published findings | [Interactive atlas](https://www.inkwell.software/resources/screenplay-anatomy?utm_source=github&utm_medium=referral&utm_campaign=screenplay_anatomy&utm_id=github_screenplay_anatomy&utm_source_platform=github&utm_content=readme_findings) |
+| Explore the published findings | [Interactive atlas](https://www.inkwell.software/resources/screenplay-anatomy?utm_source=github&utm_medium=referral&utm_campaign=screenplay_anatomy&utm_id=github_screenplay_anatomy&utm_source_platform=github&utm_content=readme_findings) · [How long a screenplay should be](https://www.inkwell.software/resources/screenplay-length?utm_source=github&utm_medium=referral&utm_campaign=screenplay_anatomy&utm_id=github_screenplay_anatomy&utm_source_platform=github&utm_content=readme_length) |
 | Use the aggregate snapshot | [JSON](data/screenplay-anatomy.generated.json), [schema](schemas/aggregate.schema.json), [data dictionary](docs/data-dictionary.md) |
 | Reproduce the analysis | [Method and reproducibility](docs/methodology.md) |
 | Run without copyrighted inputs | Original [synthetic fixture generator](fixtures/synthetic.ts) and executable tests |
